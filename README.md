@@ -1,151 +1,58 @@
 # Olist E-Commerce Analytics Dashboard
 
-End-to-end e-commerce analytics project using PostgreSQL, SQL, Microsoft Fabric, and Power BI to analyze delivery performance, revenue trends, and customer behavior.
+E-commerce analytics solution built with PostgreSQL, SQL, Power BI, and DAX to monitor sales performance, delivery issues, and customer behavior.
 
 ## Goal
 
-The goal of this project is to build a practical BI workflow around a relational e-commerce dataset. The project covers database setup, SQL validation and analysis, reusable reporting views, semantic modeling, DAX measures, and a multi-page Power BI dashboard.
+Build an e-commerce reporting workflow that gives business users a clear view of sales performance, fulfillment issues, and customer behavior.
 
-The analysis focuses on three areas:
+Raw transactional data is organized into reusable reporting tables and Power BI dashboards so key trends and problem areas can be monitored without repeatedly querying the source data.
 
-- Delivery & Operations
-- Revenue & Sales
-- Customer Analysis
+## Dashboard Overview
 
----
+### Delivery & Operations
+Tracks on-time delivery, late-order trends, regional performance, delay severity, seller performance, and customer review impact.
 
-## Highlights
+### Revenue & Sales
+Tracks revenue, order volume, average order value, product-category performance, geographic sales trends, and seller contribution.
 
-- Built a relational PostgreSQL database from the Olist e-commerce dataset
-- Validated keys, missing values, order status distributions, and table grain before analysis
-- Developed SQL analysis using joins, CTEs, conditional aggregation, window functions, ranking, and cohort logic
-- Created reusable reporting views for Power BI
-- Loaded reporting tables into Microsoft Fabric and built a semantic model with one-to-many relationships
-- Created reusable DAX measures for delivery, revenue, and customer KPIs
-- Built a three-page Power BI report covering fulfillment performance, sales trends, and customer behavior
-- Excluded sparse 2016 activity from dashboard reporting to keep time-series analysis focused on the complete 2017–2018 period
-
----
+### Customer Analysis
+Tracks customer acquisition, repeat purchasing, customer spend, purchase frequency, and cohort retention.
 
 ## Built With
 
 - PostgreSQL
 - SQL
-- Microsoft Fabric
 - Power BI
 - DAX
-- Git / GitHub
 
----
+## Reporting Workflow
 
-## Analysis
+- Loaded the Olist relational dataset into PostgreSQL
+- Validated table relationships, missing values, and order status data
+- Built reusable reporting views for orders, order items, customers, delivery reviews, dates, and cohorts
+- Created a Power BI semantic model with reusable DAX measures
+- Built a three-page dashboard for operations, sales, and customer reporting
+
+## Dashboard
 
 ### Delivery & Operations
-
-Analyzes fulfillment performance and the relationship between delivery delays and customer satisfaction.
-
-**Key metrics**
-- On-Time Delivery %
-- Late Delivery %
-- Late Orders
-- Average Delivery Days
-
-**Analysis**
-- Monthly late-delivery trends
-- States with the highest late-delivery rates
-- Severity of delivery delays
-- High-volume seller delivery performance
-- Review scores by delivery delay
+[Dashboard screenshot]
 
 ### Revenue & Sales
-
-Analyzes sales performance, product mix, geography, and seller contribution.
-
-**Key metrics**
-- Total Revenue
-- Total Orders
-- Average Order Value
-- Units Sold
-
-**Analysis**
-- Monthly revenue trends
-- Month-over-month revenue growth
-- Revenue by product category
-- Revenue by customer state
-- Units sold by product category
-- Seller revenue concentration
+[Dashboard screenshot]
 
 ### Customer Analysis
-
-Analyzes acquisition, repeat purchasing, customer value, and retention.
-
-**Key metrics**
-- Total Customers
-- Repeat Customers
-- Repeat Customer %
-- Average Customer Spend
-
-**Analysis**
-- New customers by month
-- One-time vs repeat customer behavior
-- Average spend by customer type
-- Average orders by customer type
-- Time to second purchase
-- Cohort retention
-
----
-
-## SQL Techniques
-
-- Multi-table joins
-- Common table expressions (CTEs)
-- Conditional aggregation
-- Window functions
-- `LAG()`
-- `ROW_NUMBER()`
-- Ranking
-- Cumulative calculations
-- Date analysis
-- Customer-level aggregation
-- Cohort analysis
-- Data validation and table-grain checks
-
----
-
-## Power BI
-
-The Power BI report uses a semantic model built from reusable PostgreSQL reporting views loaded into Microsoft Fabric.
-
-The model includes:
-
-- Customer summary
-- Order summary
-- Order item detail
-- Delivery reviews
-- Date table
-- Customer cohort table
-
-DAX measures are stored in a dedicated KPI measures table and reused across dashboard pages.
-
-### Dashboard Pages
-
-1. Delivery & Operations
-2. Revenue & Sales
-3. Customer Analysis
+[Dashboard screenshot]
 
 **Live Dashboard:** Coming soon
 
----
-
 ## Data Notes
 
-- Analysis begins in 2017 because 2016 contains sparse and incomplete order activity
+- Dashboard analysis begins in 2017 because 2016 contains sparse order activity
 - `customer_unique_id` is used to identify repeat customers across orders
-- Order-item data is aggregated carefully to avoid double counting across different table grains
-- Revenue is calculated from `order_items.price`
+- Revenue is calculated from product sales in `order_items.price`
 - Delivered orders are used for revenue and delivery-performance reporting
-
----
 
 ## Files
 
@@ -160,3 +67,12 @@ E-Commerce Dashboard/
 │   └── 04_reporting_views.sql
 ├── .gitignore
 └── README.md
+```
+
+## Data Source
+
+[Brazilian E-Commerce Public Dataset by Olist](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce)
+
+The dataset contains approximately 100,000 orders across customers, sellers, products, payments, reviews, and delivery records.
+
+Raw and exported CSV files are excluded from the repository due to file size.
