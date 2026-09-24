@@ -16,6 +16,8 @@ E-commerce analytics solution built with PostgreSQL, SQL, Power BI, and DAX to m
 
 ![Customer Analysis Dashboard](images/customer_analysis.png)
 
+The interactive report was built in Power BI; screenshots are included here for public portfolio viewing.
+
 ## Goal
 
 Build an e-commerce reporting workflow that gives business users a clear view of sales performance, fulfillment issues, and customer behavior.
@@ -73,13 +75,19 @@ Tracks customer acquisition, average and median customer spend, repeat customers
 
 ```text
 E-Commerce Dashboard/
+├── images/
+│   ├── delivery_operations.png
+│   ├── revenue_sales.png
+│   └── customer_analysis.png
 ├── sql/
 │   ├── 00_data_validation.sql
+│   ├── 00_exploration.sql
 │   ├── 00_schema.sql
 │   ├── 01_delivery_analysis.sql
 │   ├── 02_revenue_analysis.sql
 │   ├── 03_customer_analysis.sql
 │   └── 04_reporting_views.sql
+├── .gitattributes
 ├── .gitignore
 └── README.md
 ```
